@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="memberDao" class="spring.dao.MemberDao">
+	</bean>
+	
+	<bean id="memberRegSvc" class="spring.service.MemberRegisterService">
+		<constructor-arg ref="memberDao"/>
+	</bean>
+	
+	<bean id="changePwdSvc" class="spring.service.ChangePasswordService">
+		<constructor-arg ref="memberDao"/>
+	</bean>
+
+	<bean id="printer" class="spring.printer.MemberPrinter">
+	</bean>
+	
+	<bean id="listPrinter" class="spring.printer.MemberListPrinter"> <!-- 생성자 매개값이 두 개 이상 -->
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="printer"/>
+	</bean>
+	
+	<!-- setter 메서드를 통해수 주입 -->
+	<bean id="infoPrinter" class="spring.printer.MemberInfoPrinter">
+		<property name="dao" ref="memberDao"/>
+		<property name="printer" ref="printer"/>
+	</bean>
+	
+	<!-- 기본 타입 데이터 주입 -->
+	<bean id="versionPrinter" class="spring.printer.VersionPrinter">
+		<constructor-arg value="5"/>
+		<constructor-arg><value>3</value></constructor-arg>
+	</bean>
+	
+	<bean id="versionPrinter2" class="spring.printer.VersionPrinter">
+		<property name="majorVersion" value="5"/>
+		<property name="miborVersion"><value>3</value></property>
+	</bean>
+	
+</beans>

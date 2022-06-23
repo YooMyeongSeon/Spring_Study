@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.context.support.GenericApplicationContext"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="spring.exception.IdPasswordNotMatchingException"/>
+    <fullyQualifiedTypeName name="spring.vo.RegisterRequest"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="spring.exception.MemberNotFoundException"/>
+    <fullyQualifiedTypeName name="spring.service.MemberRegisterService"/>
+    <fullyQualifiedTypeName name="spring.service.ChangePasswordService"/>
     <fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
+    <fullyQualifiedTypeName name="spring.printer.MemberPrinter"/>
+    <fullyQualifiedTypeName name="spring.vo.Member"/>
 </qualifiedTypeNameHistroy>

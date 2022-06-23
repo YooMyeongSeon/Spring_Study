@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="printer" class="spring.printer.MemberPrinter">
+	</bean>
+	
+	<bean id="listPrinter" class="spring.printer.MemberListPrinter">
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="printer"/>
+	</bean>
+	
+	<bean id="infoPrinter" class="spring.printer.MemberInfoPrinter">
+		<property name="dao" ref="memberDao"/>
+		<property name="printer" ref="printer"/>
+	</bean>
+	
+	<bean id="versionPrinter" class="spring.printer.VersionPrinter">
+		<constructor-arg value="5"/>
+		<constructor-arg><value>3</value></constructor-arg>
+	</bean>
+	
+	<bean id="versionPrinter2" class="spring.printer.VersionPrinter">
+		<property name="majorVersion" value="5"/>
+		<property name="miborVersion"><value>3</value></property>
+	</bean>
+	
+</beans>
