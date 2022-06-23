@@ -1,9 +1,0 @@
-package ex01;
-
-public class Main01 {
-
-	public static void main(String[] args) { //스프링을 사용하지 않는 자바 예제
-
-	}
-
-}
