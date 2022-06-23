@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\Users\GREEN\Documents\Spring_Study\.metadata\.plugins\org.eclipse.jdt.core
-2051705981.index
-3812875719.index
