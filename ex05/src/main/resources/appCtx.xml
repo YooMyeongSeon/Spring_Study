@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="c1" class="spring.bean.Client1">
+		<property name="host" value="웹서버1"></property>
+	</bean>
+	
+	<!-- 초기화시와 소멸시 사용할 메서드를 설정 -->
+	<bean id="c2" class="spring.bean.Client2" init-method="open" destroy-method="close">
+		<property name="host" value="웹서버2"></property>
+	</bean>
+	
+	<bean id="c3" class="spring.bean.Client3" scope="prototype">
+		<property name="host" value="프로토 서버"></property>
+	</bean>
+	
+</beans>
