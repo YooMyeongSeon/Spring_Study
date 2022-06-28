@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 공통의 기능을 제공할 객체를 빈으로 등록 -->
+	<bean class="spring.aspect.ExeTimeAspect01" id="exeTimeAspect"/>
+	
+	<!-- AOP 설정 -->
+	<aop:config>
+		<!-- 공통 기능 묶음 -->
+		<aop:aspect id="mAspect" ref="exeTimeAspect">
+			<!-- 1. 공통 기능을 적용할 대상이 되는 핵심기능 -->
+			<aop:pointcut expression="execution(public * spring.calc..*(..))" id="pMethod"/>
+			<!-- 2. 공통 기능을 적용하는 시기 -->
+			<aop:around method="m" pointcut-ref="pMethod"/>
+		</aop:aspect>
+		<aop:aspect>
+			<!-- 추가적인 공통 기능 추가 가능 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- 사용할 객체를 빈으로 등록 -->
+	<bean class="spring.calc.ImpeCalculator" id="impeCalc"/>
+	<bean class="spring.calc.RecCalculator" id="recCalc"/>
+	
+</beans>
