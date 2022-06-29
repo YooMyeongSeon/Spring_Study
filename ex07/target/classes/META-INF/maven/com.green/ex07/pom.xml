@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.green</groupId>
+  <artifactId>ex07</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+       
+  <dependencies>
+  
+	<dependency> <!-- spring-context : Bean객체 제어 기능 -->
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.2.22.RELEASE</version>
+	</dependency>
+	
+	<dependency> <!-- aspectjweaver : AOP 기능 -->
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.9.8</version>
+	</dependency>
+	
+	<dependency> <!-- ojdbc8 : 오라클에 연결하는 기능 -->
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc8</artifactId>
+	    <version>21.1.0.0</version>
+	</dependency>
+	
+	<dependency> <!-- spring-jdbc : 데이터베이스에 연결하는 기능 -->
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>5.2.22.RELEASE</version>
+	</dependency>
+	
+	<dependency> <!-- c3p0 : 커넥션 풀 기능 -->
+	    <groupId>com.mchange</groupId>
+	    <artifactId>c3p0</artifactId>
+	    <version>0.9.5.5</version>
+	</dependency>
+	
+	<dependency> <!-- Log4j : 데이터베이스와의 통신 로그를 남기는 기능 -->
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.17.2</version>
+	</dependency>
+	
+  </dependencies>
+  
+  <build> <!-- 메이븐 리포지토리 플러그인 -->
+  	<plugins>
+  		<plugin>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.1</version>
+  			<configuration>
+  				<source>1.8</source>
+  				<target>1.8</target>
+  				<encoding>UTF-8</encoding>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
+</project>

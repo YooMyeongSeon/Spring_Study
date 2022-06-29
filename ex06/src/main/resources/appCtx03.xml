@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean class="spring.aspect.ExeTimeAspect01" id="exeTimeAspect"/>
+	<bean class="spring.aspect.CacheAspect" id="cacheAspect"/>
+	
+	<aop:config>
+		<aop:aspect id="mAspect" ref="exeTimeAspect" order="0">
+			<aop:pointcut expression="execution(public * spring.calc..*(..))" id="pMethod"/>
+			<aop:around method="m" pointcut-ref="pMethod"/>
+		</aop:aspect>
+		<aop:aspect id="cAspect" ref="cacheAspect" order="1">
+			<aop:pointcut expression="execution(public * spring.calc..*(..))" id="cMethod"/>
+			<aop:around method="execute" pointcut-ref="cMethod"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<bean class="spring.calc.ImpeCalculator" id="impeCalc"/>
+	<bean class="spring.calc.RecCalculator" id="recCalc"/>
+	
+</beans>

@@ -4,8 +4,10 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 
 @Aspect //공통 기능을 수행하는 클래스로 선언
+@Order(0) //여러개의 Aspect 객체에서 우선순위를 정하는 방법
 public class ExeTimeAspect02 {
 	
 	@Pointcut("execution(public * spring.calc..*(..))")
