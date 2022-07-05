@@ -1,7 +1,9 @@
 package spring.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +42,11 @@ public class RegisterController {
 	//1. 클라이언트에서 값을 얻어오는 방법 B
 	//@RequestMapping(value="/register/step2", method=RequestMethod.POST) 으로 작성하는 문법을 아래 @PostMapping으로 대체
 	@PostMapping("/step2")
-	public String handlerStep2(@RequestParam(value="agree", required = false, defaultValue = "false")boolean agree) {
+	public String handlerStep2(@RequestParam(value="agree", required = false, defaultValue = "false")boolean agree, Model model) {
 		if (!agree) {
 			return "redirect:step1";
 		}
+		model.addAttribute("formData", new RegisterRequest());
 		return "register/step2";
 	}
 	
@@ -68,7 +71,7 @@ public class RegisterController {
 //	}
 	
 	@PostMapping("/step3")
-	public String handlerStep3(RegisterRequest regReq) { //커맨드 객체
+	public String handlerStep3(@ModelAttribute("formData")RegisterRequest regReq) { //커맨드 객체
 //		System.out.println("이름 : " + regReq.getName());
 //		System.out.println("이메일 : " + regReq.getEmail());
 //		System.out.println("암호 : " + regReq.getPassword());
