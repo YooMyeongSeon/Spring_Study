@@ -2,6 +2,7 @@ package spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.exception.AlreadyExistingMemberException;
 import spring.service.MemberRegisterService;
+import spring.validator.RegisterRequestValidator;
 import spring.vo.RegisterRequest;
 
 @Controller
@@ -71,16 +73,23 @@ public class RegisterController {
 //	}
 	
 	@PostMapping("/step3")
-	public String handlerStep3(@ModelAttribute("formData")RegisterRequest regReq) { //커맨드 객체
+	public String handlerStep3(@ModelAttribute("formData")RegisterRequest regReq, Errors err) { //커맨드 객체
 //		System.out.println("이름 : " + regReq.getName());
 //		System.out.println("이메일 : " + regReq.getEmail());
 //		System.out.println("암호 : " + regReq.getPassword());
 //		System.out.println("확인 암호 : " + regReq.getConfirmPassword());
 		
+		new RegisterRequestValidator().validate(regReq, err);
+		
+		if (err.hasErrors()) {
+			return "register/step2";
+		}
+		
 		try {
 			memberRegisterService.regist(regReq);
 			return "register/step3";
 		} catch(AlreadyExistingMemberException e) {
+			err.rejectValue("email", "duplicate"); //중복 에러
 			return "register/step2";
 		}
 	}

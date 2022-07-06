@@ -6,11 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><spring:message code="member.register"/></title>
+<title><spring:message code="login.title"/></title>
 </head>
 <body>
-	<!-- <p><strong>${registerRequest.name}님!</strong>회원 가입을 완료했습니다.</p> -->
-	<p><spring:message code="register.done" arguments="${formData.name}"/></p>
+	<p><spring:message code="login.done"/></p>
 	<p><a href="<c:url value='/main'/>"><spring:message code="go.main"/></a></p>
 </body>
 </html>

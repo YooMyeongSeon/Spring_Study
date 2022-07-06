@@ -10,4 +10,8 @@
 <!-- 	<bean class="spring.controller.MainController"></bean> -->
 
 	<bean class="spring.controller.SurveyController"></bean>
+	
+	<bean class="spring.controller.LoginController">
+		<property name="authService" ref="authSvc"></property>
+	</bean>
 </beans>
