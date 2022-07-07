@@ -3,6 +3,7 @@ package spring.vo;
 public class LoginCommand {
 	private String email;
 	private String password;
+	private boolean rememberEmail;
 	
 	public String getEmail() {
 		return email;
@@ -15,5 +16,11 @@ public class LoginCommand {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public boolean isRememberEmail() {
+		return rememberEmail;
+	}
+	public void setRememberEmail(boolean rememberEmail) {
+		this.rememberEmail = rememberEmail;
 	}
 }

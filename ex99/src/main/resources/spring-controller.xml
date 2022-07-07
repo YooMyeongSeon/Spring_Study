@@ -12,6 +12,13 @@
 	<bean class="spring.controller.SurveyController"></bean>
 	
 	<bean class="spring.controller.LoginController">
-		<property name="authService" ref="authSvc"></property>
+		<property name="authService" ref="authService"></property>
 	</bean>
+	
+	<bean class="spring.controller.LogoutController"></bean>
+	
+	<bean class="spring.controller.ChangePwdController">
+		<property name="changePasswordService" ref="changeSvc"></property>
+	</bean>
+	
 </beans>

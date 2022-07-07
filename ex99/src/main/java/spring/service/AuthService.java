@@ -19,7 +19,7 @@ public class AuthService {
 			throw new IdPasswordNotMatchingException();
 		}
 		
-		if (member.getPassword().equals(password)) {
+		if (!member.getPassword().equals(password)) {
 			throw new IdPasswordNotMatchingException();
 		}
 		
