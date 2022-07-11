@@ -21,4 +21,15 @@
 		<property name="changePasswordService" ref="changeSvc"></property>
 	</bean>
 	
+	<bean class="spring.controller.MemberListController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	
+	<bean class="spring.controller.MemberDetailController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	
+	<bean class="spring.controller.CommonExceptionHandler">
+	</bean>
+	
 </beans>
