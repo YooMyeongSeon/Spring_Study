@@ -9,3 +9,4 @@
 ### chap7 : [DB 연동](ex07)
 ### chap8 : [스프링 MVC 시작하기](ex08)
 ### chap99 : [MVC](ex99)
+### chap99_J : [MVC(자바 설정)](ex99_J)
