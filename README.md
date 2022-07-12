@@ -8,5 +8,5 @@
 ### chap6 : [AOP 소개](ex06)
 ### chap7 : [DB 연동](ex07)
 ### chap8 : [스프링 MVC 시작하기](ex08)
-### chap99 : [MVC](ex99)
-### chap99_J : [MVC(자바 설정)](ex99_J)
+### chap99 : [MVC, 프로필과 프로퍼티](ex99)
+### chap99_J : [MVC(자바 설정), 프로필과 프로퍼티](ex99_J)
