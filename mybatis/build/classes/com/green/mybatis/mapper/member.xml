@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.mapper.member">
+  
+  <resultMap type="memVo" id="mVo"><!-- 수동으로 컬럼과 자바객체를 매핑 -->
+  <result column="id" property="id"/>
+  <result column="name" property="name"/>
+  <result column="email" property="email"/>
+  <result column="password" property="password"/>
+  	<result column="regDate" property="registerDate"/>
+  </resultMap>
+  
+<!--   <select id="selectAll" resultType="com.green.vo.MemberVo"> -->
+  <select id="selectAll" resultMap="mVo">
+    select *
+    from members
+    order by id DESC
+  </select>
+
+  <select id="selectCnt" resultType="int">
+  	select count(*) from members
+  </select>
+
+  <select id="selectByEmail" resultMap="mVo" parameterType="String">
+  	select * from members where email=#{email}
+  </select>
+
+  <insert id="insertMember" parameterType="memVo">
+  	insert into members values(members_seq.nextval, #{email}, #{password}, #{name}, sysdate)
+  </insert>
+  
+  <update id="updateMember" parameterType="memVo">
+  	update members set name = #{name}, password = ${password} where email = #{email}
+  </update>
+
+  <delete id="deleteMember" parameterType="String">
+  	delete from members where email = #{email}
+  </delete>
+
+</mapper>

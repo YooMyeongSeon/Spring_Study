@@ -10,4 +10,5 @@
 ### chap8 : [스프링 MVC 시작하기](ex08)
 ### chap99 : [MVC, 프로필과 프로퍼티](ex99)
 ### chap99_J : [MVC(자바 설정), 프로필과 프로퍼티](ex99_J)
+### mybatis : [마이바티스](mybatis)
 ### chatting : [멀티 스레드,  IO기반 입출력 스트림, 소켓 프로그래밍](chatting)
