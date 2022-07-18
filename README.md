@@ -12,4 +12,4 @@
 ### chap99_J : [MVC(자바 설정), 프로필과 프로퍼티](ex99_J)
 ### mybatis : [마이바티스](mybatis)
 ### chatting : [멀티 스레드,  IO기반 입출력 스트림, 소켓 프로그래밍](chatting)
-### Test : [내부 평가](Test}
+### Test : [내부 평가](Test)
