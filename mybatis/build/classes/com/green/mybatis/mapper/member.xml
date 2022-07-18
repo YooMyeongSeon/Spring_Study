@@ -12,6 +12,10 @@
   	<result column="regDate" property="registerDate"/>
   </resultMap>
   
+  <sql id="sfm">
+  	select * from members
+  </sql>
+  
 <!--   <select id="selectAll" resultType="com.green.vo.MemberVo"> -->
   <select id="selectAll" resultMap="mVo">
     select *
@@ -39,4 +43,66 @@
   	delete from members where email = #{email}
   </delete>
 
+  <!-- 동적 SQL문 생성 : IF -->
+  
+  <select id="selectMember" resultMap="mVo" parameterType="memVo">
+  	select * from members
+  	
+  	<where>
+  	  <if test="email != '' and email != null">
+  	    email = #{email} <!-- select * from members where email = #{email} -->
+  	  </if>
+  	  <if test="name != '' and name != null">
+  	    and name = #{name} <!-- select * from members where name = #{name} -->
+  	  </if>
+  	  <!-- 두 항목 모두 참이라면 select * from members where email = #{email} and name = #{name} -->
+  	</where>
+  </select>
+  
+  <select id="selectMember2" resultMap="mVo" parameterType="memVo">
+  	select * from members
+  	
+  	<where>
+		<choose>
+			<when test="email != '' and email != null and name != '' and name != null">
+				email = #{email} and name = #{name}
+			</when>
+			<when test="email != '' and email != null">
+				email = #{email}
+			</when>
+			<when test="name != '' and name != null">
+				name = #{name}
+			</when>
+		</choose>
+  	</where>
+  	order by id ASC
+  	
+  </select>
+
+  <!-- 동적 SQL문 생성 : ForEach -->
+  
+  <!--
+  
+  	<foreach item="item" collection="list" index="index" open="(" close=")" separator=",">
+  	
+  	item = 리스트로 부터 꺼내진 하나의 데이터
+  	collection = 전달받은 값(배열(array) 또는 리스트(list))
+  	index = 순서 번호, 0부터 시작
+  	open = 구문이 시작될 때 지정한 기호 추가
+  	close = 구문이 끝날 때 지정한 기호 추가
+  	separator = 한 번 이상 반복되는 경우 지정한 기호 추가
+  	
+  -->
+  
+  <select id="forEachSearch" resultMap="mVo" parameterType="java.util.List">
+  	<!-- select * from members -->
+  	<include refid="sfm"/>
+  	where name in
+  	<foreach collection="list" item="item" open="(" close=")" separator=",">
+  	  #{item}
+  	</foreach>
+  	order by id ASC
+  	
+  </select>
+  
 </mapper>

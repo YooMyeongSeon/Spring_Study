@@ -27,7 +27,7 @@ public class MemberListController {
 	@PostMapping("member/list")
 	public String form(ListCommand listCommand, Model model) {
 		if (listCommand.getFrom() != null && listCommand.getTo() != null) {
-			List<Member> list = dao.selectByRegDate(listCommand.getFrom(), listCommand.getTo());
+			List<Member> list = dao.selectByRegDate(listCommand);
 
 			model.addAttribute("members", list);
 		}

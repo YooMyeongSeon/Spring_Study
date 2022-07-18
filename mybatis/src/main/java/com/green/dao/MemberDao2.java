@@ -90,4 +90,26 @@ public class MemberDao2 { //마이바티스 설정을 읽어서 DB에 접속하�
 		session.delete("com.green.mapper.member.deleteMember", email);
 		session.commit();
 	}
+	
+	public List<MemberVo> searchMember(MemberVo mVo) {
+		List<MemberVo> list = null;
+		
+		sqlMapper = getFactory();
+		SqlSession session = sqlMapper.openSession();
+		
+//		list = session.selectList("com.green.mapper.member.selectMember", mVo);
+		list = session.selectList("com.green.mapper.member.selectMember2", mVo);
+		
+		return list;
+	}
+	
+	public List<MemberVo> forEachSearchMember(List<String> name) {
+		List<MemberVo> list = null;
+		
+		sqlMapper = getFactory();
+		SqlSession session = sqlMapper.openSession();
+		
+		list = session.selectList("com.green.mapper.member.forEachSearch", name);
+		return list;
+	}
 }

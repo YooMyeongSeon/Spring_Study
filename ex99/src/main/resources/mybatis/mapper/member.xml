@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.member">
+  <resultMap type="member" id="mVo"><!-- 수동으로 컬럼과 자바객체를 매핑 -->
+	<result column="id" property="id"/>
+	<result column="name" property="name"/>
+	<result column="email" property="email"/>
+	<result column="password" property="password"/>
+  	<result column="regDate" property="registerDate"/>
+  </resultMap>
+  
+  <sql id="selAllMember">
+  	select * from members
+  </sql>
+  
+  <select id="selectByEmail" resultMap="mVo" parameterType="String">
+ 	 <include refid="selAllMember"/>
+ 	 where email = #{email}
+  </select>
+	
+  <select id="selectAll" resultMap="mVo">
+ 	 <include refid="selAllMember"/>
+ 	 order by id ASC
+  </select>
+  
+  <select id="selectByRegDate" resultMap="mVo" parameterType="spring.vo.ListCommand">
+ 	 <include refid="selAllMember"/>
+ 	 where regdate between #{from} and #{to}
+ 	 order by regdate ASC
+  </select>
+  
+  <select id="selectById" resultMap="mVo" parameterType="long">
+ 	 <include refid="selAllMember"/>
+ 	 where id = #{id}
+  </select>
+
+  <select id="selectCount" resultType="int">
+  	select count(*) from members
+  </select>
+	
+  <insert id="insertMember" parameterType="member">
+  	insert into members values(members_seq.nextval, #{email}, #{password}, #{name}, sysdate)
+  </insert>
+
+  <update id="updateMember" parameterType="member">
+    update members set name=#{name}, password=#{password} where email = #{email}
+  </update>
+  
+  <delete id="deleteMember" parameterType="String">
+  	delete from members where email = #{email}
+  </delete>
+  
+</mapper>
